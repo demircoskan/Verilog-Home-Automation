@@ -18,7 +18,7 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
+`include "constant.vh
 
 module heating_system(
 input [`temperature_sensor_data_width-1:0] temp,
