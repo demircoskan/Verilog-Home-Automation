@@ -27,6 +27,17 @@ input [`window_sensor_data_width-1:0] window,
 input [`heating_system_on_off_data_width-1:0] heating_system,            
 output ac_cool
     );
+    //Data Flow Modelling
     wire high_temp = (temp > temp_treshold);
     assign ac_cool = (~heating_system) & (high_temp & presence & ~window);
+endmodule
+
+    //Behavioral Modelling
+always @(*) begin
+        if (~heating_system && (temp > `temp_treshold) && presence && ~window) begin
+            ac_cool = 1;
+        end else begin
+            ac_cool = 0;
+        end
+    end    
 endmodule
