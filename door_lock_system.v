@@ -24,6 +24,11 @@ module door_lock_system(
 input [`door_motion_sensor_data_width-1:0] door_motion_sensor,
 output reg lock_door
     );
+    //Data Flow Modelling
+    assign lock_door = (door_motion_sensor == 1'b0) ? 1'b1 : 1'b0; 
+endmodule
+
+    //Behavioral Modelling
   always @(door_motion_sensor) begin
     if (door_motion_sensor == 1'b0)
         lock_door = 1'b1;
