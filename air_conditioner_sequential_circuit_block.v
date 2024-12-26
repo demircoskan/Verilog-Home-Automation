@@ -10,13 +10,16 @@ module air_conditioner(
     output reg ac_cool
     );
 
-    wire high_temp = (temp > temp_treshold);
-
+    // Behavioral Modelling
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             ac_cool <= 0;
         end else begin
-            ac_cool <= (~heating_system) & (high_temp & presence & ~window);
+            if (~heating_system && (temp > `temp_treshold) && presence && ~window) begin
+                ac_cool <= 1;
+            end else begin
+                ac_cool <= 0;
+            end
         end
-    end
+    end    
 endmodule
