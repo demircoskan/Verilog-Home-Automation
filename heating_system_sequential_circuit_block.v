@@ -13,7 +13,7 @@ module heating_system(
     output reg heating_system
     );
    
-    // Behavioral Modelling
+
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             heating_system <= 0;
